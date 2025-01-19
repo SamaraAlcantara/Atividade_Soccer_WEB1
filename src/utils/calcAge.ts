@@ -1,3 +1,4 @@
+//CALCULANDO IDADE DO ATLETA
 export const caclAge = (date: string): number => {
   const dateAge = new Date(date);
   const today = new Date();

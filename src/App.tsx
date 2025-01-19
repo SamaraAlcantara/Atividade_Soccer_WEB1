@@ -18,7 +18,7 @@ interface Player {
 function App() {
   const [searchPlayer, setSearchPlayer] = useState("");
   const [favorite, setFavorite] = useState<Player[]>(() => {
-    const savedFavorites = sessionStorage.getItem("favorites");
+    const savedFavorites = sessionStorage.getItem("favorites"); //FAVORITOS
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
@@ -34,6 +34,7 @@ function App() {
     if (type === "data") {
       const response = await axios.get(
         `https://apiv3.apifootball.com/?action=get_players&player_name=${searchPlayer}&APIkey=${
+          //API
           import.meta.env.VITE_API_KEY
         }`
       );
@@ -54,7 +55,7 @@ function App() {
     <div className="container">
       <div className="menu">
         <Button
-          buttonName={"Ver meus Favoritos"}
+          buttonName={"Ver meus Favoritos"} //BOTÃO VER FAVORITADOS
           onClick={() => {
             fetchPlayers("favorite");
           }}
@@ -64,7 +65,7 @@ function App() {
         <FlexDiv>
           <Search onChange={handleSearchChange} />
           <Button
-            buttonName={"Buscar jogador"}
+            buttonName={"Buscar jogador"} //BOTÃO DE BUSCA
             onClick={() => {
               fetchPlayers("data");
             }}
@@ -74,36 +75,41 @@ function App() {
       {!loading ? (
         <div className="results">
           {data &&
-            data.map((item, index) => (
-              <div className="playerArea">
-                <CardAtleta
-                  key={index}
-                  image={item.player_image}
-                  name={item.player_name}
-                  age={caclAge(item.player_birthdate)}
-                  team={item.team_name}
-                  country={item.player_country}
-                />
-                {!favorite.find((fav) => fav.player_id === item.player_id) ? (
-                  <Button
-                    onClick={() =>
-                      addFavorite({
-                        player_id: `${item.player_id}`,
-                        player_name: `${item.player_name}`,
-                        player_birthdate: `${item.player_birthdate}`,
-                        team_name: `${item.team_name}`,
-                        player_country: `${item.player_country}`,
-                        player_image: `${item.player_image}`,
-                      })
-                    }
-                    buttonName="Adicionar aos Favoritos"
-                    color="transparent"
-                  ></Button>
-                ) : (
-                  <h3 className="favTitle">Favorito!</h3>
-                )}
-              </div>
-            ))}
+            data.map(
+              (
+                item,
+                index //MAPEANDO REULTADOS (NOME, IMAGEM, IDADE, TIME E PAIS)
+              ) => (
+                <div className="playerArea">
+                  <CardAtleta
+                    key={index} //ATRIBUI UM ID AO ATLETA
+                    image={item.player_image}
+                    name={item.player_name}
+                    age={caclAge(item.player_birthdate)}
+                    team={item.team_name}
+                    country={item.player_country}
+                  />
+                  {!favorite.find((fav) => fav.player_id === item.player_id) ? (
+                    <Button
+                      onClick={() =>
+                        addFavorite({
+                          player_id: `${item.player_id}`,
+                          player_name: `${item.player_name}`,
+                          player_birthdate: `${item.player_birthdate}`,
+                          team_name: `${item.team_name}`,
+                          player_country: `${item.player_country}`,
+                          player_image: `${item.player_image}`,
+                        })
+                      }
+                      buttonName="Adicionar aos Favoritos"
+                      color="transparent"
+                    ></Button>
+                  ) : (
+                    <h3 className="favTitle">Favorito!</h3>
+                  )}
+                </div>
+              )
+            )}
         </div>
       ) : (
         <p>Carregando</p>

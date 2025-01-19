@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+//ESTILIZAÇÃO DO CARD ATLETA
 export const ContainerCardAtleta = styled.div`
   width: 300px;
   height: 200px;

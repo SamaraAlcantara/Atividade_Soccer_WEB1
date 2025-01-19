@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+//ESTILIZANDO BOTÃO SEARCH
 export const SearchInput = styled.input`
   width: 300px;
   padding: 10px 15px;
