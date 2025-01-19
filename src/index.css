@@ -36,3 +36,9 @@
   font-size: 1rem;
   color: #ffbf00;
 }
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}

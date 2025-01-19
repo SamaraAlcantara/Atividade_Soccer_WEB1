@@ -23,7 +23,7 @@ export const CardAtleta = (props: Atleta) => {
       </div>
       <div className="dataAtleta">
         <h4>{props.name}</h4>
-        <p>{props.age}</p>
+        <p>{props.age} anos</p>
         <p>{props.team}</p>
         <p>{props.country}</p>
       </div>

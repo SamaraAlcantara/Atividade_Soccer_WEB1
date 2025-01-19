@@ -52,7 +52,7 @@ function App() {
 
   return (
     <div className="container">
-      <FlexDiv>
+      <div className="menu">
         <Button
           buttonName={"Ver meus Favoritos"}
           onClick={() => {
@@ -60,14 +60,17 @@ function App() {
           }}
           color="#ffbf00"
         />
-        <Search onChange={handleSearchChange} />
-        <Button
-          buttonName={"Buscar jogador"}
-          onClick={() => {
-            fetchPlayers("data");
-          }}
-        />
-      </FlexDiv>
+
+        <FlexDiv>
+          <Search onChange={handleSearchChange} />
+          <Button
+            buttonName={"Buscar jogador"}
+            onClick={() => {
+              fetchPlayers("data");
+            }}
+          />
+        </FlexDiv>
+      </div>
       {!loading ? (
         <div className="results">
           {data &&
@@ -87,7 +90,7 @@ function App() {
                       addFavorite({
                         player_id: `${item.player_id}`,
                         player_name: `${item.player_name}`,
-                        player_birthdate: `${(item.player_birthdate)}`,
+                        player_birthdate: `${item.player_birthdate}`,
                         team_name: `${item.team_name}`,
                         player_country: `${item.player_country}`,
                         player_image: `${item.player_image}`,
