@@ -1,0 +1,38 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.playerArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.favTitle {
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #ffbf00;
+}
