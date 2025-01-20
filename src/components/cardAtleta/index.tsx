@@ -7,7 +7,7 @@ type Atleta = {
   country: string;
   image: string;
 };
-//POPULANDO O CARD
+//Componente estilizado ContainerCardAtleta
 export const CardAtleta = (props: Atleta) => {
   return (
     <C.ContainerCardAtleta>
